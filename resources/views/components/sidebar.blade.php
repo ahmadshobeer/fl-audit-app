@@ -4,7 +4,7 @@
             <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
             <a class="navbar-brand" href="#">
                 <b class="logo-icon text-center">
-                    <img src="{{asset('assets/images/logo_arita.png')}}" width="40%"><br>
+                    <img src="{{asset('images/logo_arita.png')}}" width="40%"><br>
                 </b>
             </a>
         </div>
@@ -19,11 +19,11 @@
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{asset('assets/images/avrifan.jpeg')}}" alt="user" class="rounded-circle" width="31">
+                        <img src="{{asset('images/avrifan.jpeg')}}" alt="user" class="rounded-circle" width="31">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                         <div class="d-flex no-block align-items-center p-3 mb-2 border-bottom">
-                            <div class=""><img src="{{asset('assets/images/avrifan.jpeg')}}" alt="user" class="rounded" width="80"></div>
+                            <div class=""><img src="{{asset('images/avrifan.jpeg')}}" alt="user" class="rounded" width="80"></div>
                             <div class="ml-2">
                                 <h4 class="mb-0">Rifan Hardiyan</h4>
                                 <p class=" mb-0">rifan@arita.co.id</p>
@@ -52,13 +52,13 @@
                 </li>
                 
                 <li class="sidebar-item"> 
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link " href="../st" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link " href="/struktur-organisasi" aria-expanded="false">
                         <i class="fas fa-retweet mr-2"></i>
                         <span class="hide-menu">Struktur Organisasi</span>
                     </a>
                 </li>
                 <li class="sidebar-item"> 
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link " href="../sop" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link " href="/sop" aria-expanded="false">
                         <i class="fas fa-sign-language mr-2"></i>
                         <span class="hide-menu">SOP</span>
                     </a>

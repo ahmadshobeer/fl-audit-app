@@ -21,6 +21,11 @@
     <link href="{{ asset('assets/extra-libs/css-chart/css-chart.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('dist/css/style.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('assets/extra-libs/jquery-steps/jquery.steps.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/extra-libs/jquery-steps/steps.css') }}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/libs/quill/dist/quill.snow.css') }}">
+    <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -64,33 +69,18 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-md-5 align-self-center">
-                        <h4 class="page-title">Dashboard</h4>
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+            
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
+            {{-- <div class="container-fluid"> --}}
                 <!-- Row -->
                  @yield('main')
                 <!-- Row -->
-            </div>
+            {{-- </div> --}}
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -354,7 +344,29 @@
     <script src="{{ asset('assets/libs/echarts/dist/echarts.min.js') }}"></script>
     <script src="{{ asset('assets/libs/d3/dist/d3.min.js') }}"></script>
     <script src="{{ asset('assets/libs/c3/c3.min.js') }}"></script>
-    <script src="{{ asset('dist/js/pages/dashboards/dashboard5.js') }}"></script>
+    <script src="{{ asset('dist/js/pages/dashboards/dashboard2.js') }}"></script>
+
+
+    <script src="{{ asset('libs/jquery-steps/build/jquery.steps.min.js') }}"></script>
+    <script src="{{ asset('libs/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/pages/notes/notes.js') }}"></script>
+    <script src="{{ asset('libs/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+
+    <script src="{{ asset('js/pages/datatable/custom-datatable.js') }}"></script>
+    <script src="{{ asset('js/pages/datatable/datatable-basic.init.js') }}"></script>
+
+    <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            // Menyembunyikan semua kategori
+            document.querySelectorAll(".single-note-item").forEach(function (item) {
+                item.style.display = "none";
+            });
+
+            // Menampilkan hanya kategori default (misalnya 'ho')
+            document.querySelector(".single-note-item.ho").style.display = "block";
+        });
+    </script>
+
 </body>
 
 </html>
