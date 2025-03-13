@@ -6,15 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers;
-
-Route::get('/test-db', function () {
-    try {
-        $data = DB::connection()->getPdo();
-        return "Koneksi berhasil: " . $data->getAttribute(PDO::ATTR_DRIVER_NAME);
-    } catch (\Exception $e) {
-        return "Koneksi gagal: " . $e->getMessage();
-    }
-});
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -30,3 +23,13 @@ Route::get('/sop', function () {
 });
 
 Route::get('/api/companies', [ApiController::class, 'getCompanies']);
+
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+
+Route::resource('/users',UserController::class);
+
+Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+
+Route::get('/users/{id}/edit', [UserController::class, 'edit']);
+Route::put('/users/{id}', [UserController::class, 'update']);
+Route::delete('/users/{id}', [UserController::class, 'destroy']);
