@@ -11,6 +11,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo_arita.png') }}">
     <title>APP-Audit | ARITA</title>
     <link href="{{asset('css/style.min.css') }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="main-wrapper">
@@ -27,6 +29,7 @@
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{ asset('libs/popper.js/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('libs/jquery-validation/dist/jquery.validate.min.js') }}"></script>
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
@@ -36,10 +39,10 @@
     // ============================================================== 
     // Login and Recover Password 
     // ============================================================== 
-    $('#to-recover').on("click", function() {
+    /* $('#to-recover').on("click", function() {
         $("#loginform").slideUp();
         $("#recoverform").fadeIn();
-    });
+    }); */
     </script>
 </body>
 

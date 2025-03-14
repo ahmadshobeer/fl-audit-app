@@ -16,23 +16,16 @@
             <!-- Form -->
             <div class="row">
                 <div class="col-12">
-                    <form class="form-horizontal mt-3 form-material" id="loginform" action="index.html">
-                        <div class="form-group mb-5 mt-4">
+                    <form class="form-horizontal mt-3 form-material" id="login_form" >
+                        @csrf
+                        <div class="form-group mb-3">
                             <div class="col-xs-12">
-                                <select class="select2 form-control custom-select select2-hidden-accessible">
-                                    <option value="" class="text-center">Admin</option>
-                                    <option value="" class="text-center">Karyawan</option>
-                                </select>
+                                <input class="form-control" type="text" required="" name="username" id="username" placeholder="Username"> 
                             </div>
                         </div>
                         <div class="form-group mb-3">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Username"> 
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Password"> 
+                                <input class="form-control" type="password" name="password" id="password" required="" placeholder="Password"> 
                             </div>
                         </div>
                         <div class="form-group d-flex align-items-center">
@@ -43,7 +36,8 @@
                         </div>
                         <div class="form-group text-center mt-3">
                             <div class="col-xs-12">
-                                <a class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" href="/">Log In</a>
+                                <button type="submit" class="btn btn-primary btn-info btn-lg btn-block waves-effect waves-light">Login</button>
+                                {{-- <a class="btn btn-info btn-lg btn-block waves-effect waves-light" type="submit" href="/">Log In</a> --}}
                             </div>
                         </div>
                     </form>
@@ -52,5 +46,44 @@
         </div>
     </div>
 </div>
+
+<script>
+
+   
+    $(document).on("submit", "#login_form", function (e) {
+    e.preventDefault();
+
+    $.ajax({
+        type: "POST",
+        url: "/post-login",
+        data: {
+            username: $("#username").val(),
+            password: $("#password").val(),
+            _token: "{{ csrf_token() }}"
+        },
+        dataType: "json",
+        success: function (response) {
+            if (response.success) {
+                Swal.fire({
+                    title: "Berhasil!",
+                    text: response.message,
+                    icon: "success",
+                    timer: 2000,
+                    showConfirmButton: false
+                }).then(() => {
+                    window.location.href = response.redirect; // Redirect ke /home
+                });
+            }
+        },
+        error: function (xhr) {
+            Swal.fire({
+                title: "Gagal!",
+                text: xhr.responseJSON.message,
+                icon: "error"
+            });
+        }
+    });
+});
+</script>
 
 @endsection

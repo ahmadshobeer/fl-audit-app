@@ -25,11 +25,11 @@
                         <div class="d-flex no-block align-items-center p-3 mb-2 border-bottom">
                             <div class=""><img src="{{asset('images/avrifan.jpeg')}}" alt="user" class="rounded" width="80"></div>
                             <div class="ml-2">
-                                <h4 class="mb-0">Rifan Hardiyan</h4>
-                                <p class=" mb-0">rifan@arita.co.id</p>
+                                <h4 class="mb-0">{{ Auth::user()->name }}</h4>
+                                <p class=" mb-0">{{ Auth::user()->email }}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="/"><i class="fa fa-power-off mr-1 ml-1"></i> Logout</a>
+                        <a class="dropdown-item" href="/logout"><i class="fa fa-power-off mr-1 ml-1"></i> Logout</a>
                     </div>
                 </li>
             </ul>
