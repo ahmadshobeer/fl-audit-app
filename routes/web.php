@@ -20,7 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::get('/struktur-organisasi', [StrukturOrganisasiController::class, 'index']);
     Route::get('/sop', function () {
-        return view('standard-operating-procedure');
+        return view('menu.standard-operating-procedure');
     });
     
     Route::get('/api/companies', [ApiController::class, 'getCompanies']);
