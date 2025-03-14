@@ -10,6 +10,6 @@ class StrukturOrganisasiController extends Controller
 
     public function index()
     {
-        return view('struktur-organisasi');
+        return view('menu.struktur-organisasi');
     }
 }

@@ -13,7 +13,7 @@ use App\Http\Controllers\UserController;
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', function () {
-        return view('dashboard');
+        return view('menu.dashboard');
     });
     
     
