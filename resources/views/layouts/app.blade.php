@@ -15,18 +15,18 @@
 	<link rel="canonical" href="https://www.wrappixel.com/templates/monsteradmin/" />
     <!-- Custom CSS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="{{ asset('assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dist/js/pages/chartist/chartist-init.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/extra-libs/c3/c3.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/extra-libs/css-chart/css-chart.css') }}" rel="stylesheet">
+    <link href="{{ asset('libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css') }}" rel="stylesheet">
+    <link href="{{ asset('extra-libs/c3/c3.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('extra-libs/css-chart/css-chart.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('dist/css/style.min.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('assets/extra-libs/jquery-steps/jquery.steps.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/extra-libs/jquery-steps/steps.css') }}" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/libs/quill/dist/quill.snow.css') }}">
-    <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
+    <link href="{{ asset('extra-libs/jquery-steps/jquery.steps.css') }}" rel="stylesheet">
+    <link href="{{ asset('extra-libs/jquery-steps/steps.css') }}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ asset('libs/quill/dist/quill.snow.css') }}">
+    <link href="{{ asset('libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -320,17 +320,17 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}" ></script>
+    <script src="{{ asset('libs/jquery/dist/jquery.min.js') }}" ></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{ asset('assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('libs/popper.js/dist/umd/popper.min.js')}}"></script>
+    <script src="{{ asset('libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- apps -->
     <script src="{{ asset('dist/js/app.min.js') }}"></script>
     <script src="{{ asset('dist/js/app.init.js') }}"></script>
     <script src="{{ asset('dist/js/app-style-switcher.js') }}"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="{{ asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script src="{{ asset('libs/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
     <!--Wave Effects -->
     <script src="{{ asset('dist/js/waves.js') }}"></script>
     <!--Menu sidebar -->
@@ -341,11 +341,11 @@
     <!--This page JavaScript -->
     <!--Morris JavaScript -->
     <!--c3 charts -->
-    <script src="{{ asset('assets/libs/chartist/dist/chartist.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/echarts/dist/echarts.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/d3/dist/d3.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/c3/c3.min.js') }}"></script>
+    <script src="{{ asset('libs/chartist/dist/chartist.min.js') }}"></script>
+    <script src="{{ asset('libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
+    <script src="{{ asset('libs/echarts/dist/echarts.min.js') }}"></script>
+    <script src="{{ asset('libs/d3/dist/d3.min.js') }}"></script>
+    <script src="{{ asset('libs/c3/c3.min.js') }}"></script>
     <script src="{{ asset('dist/js/pages/dashboards/dashboard2.js') }}"></script>
 
 
