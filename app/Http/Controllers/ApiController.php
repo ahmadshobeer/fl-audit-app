@@ -2,39 +2,113 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpFoundation\Response;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 class ApiController extends Controller
 {
     //
 
-    public function getCompanies()
+    public function getDivisions(HttpRequest $request)
     {
-
-        $jwtToken = 'iOwS/qdeECuSQOiXSua5MA3JeO+z7HGxCycIZE32tnwvNqeWb8xYU4iuRPE+0c/+drv5vannoJvQP30izo4gpp7MgXD9m+2uogfAILsPMpKCrZI6vWrNu4tV1KkE4Db8n7BDyIeTQsAReVyJD15qVZZdPA/+Gvw7BeBjHg39BprIXOmsNGZ69NkwRc7CxQXukJUxUH1PPFHeJuSHjMGdmEa7XhVfqwj1WGsSTdJRMKJ5ddUcqdJR1jXX4rB3zHvYygTcdjGrkoM+0klP+oSfDLlB0zFrS9rlFGFQ9f6/RbAtHQhGEVyNiaVZU4bYu/yBSDeLaUJjXeAA5g5uVwRl+w==';
-        // Ganti dengan endpoint API yang sesuai
-        $apiUrl = "https://api.arita.co.id/api/audit/companies";
-
-        // Ambil token JWT (bisa dari config, database, atau auth)
-
-        // Kirim request ke API dengan header Authorization Bearer Token
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $jwtToken,
-            'Accept' => 'application/json',
-        ])->get($apiUrl);
-
-        // Cek apakah request berhasil
-        if ($response->successful()) {
-            return response()->json($response->json());
-        }else if (!$response->successful()) {
+        
+          // Ambil token dari .env
+          $secretKey = env('API_JWT_SECRET');
+          $payload = [];
+        
+        // Gunakan secret key yang sama dengan JWT_SECRET di API
+        $apiToken = JWT::encode($payload, $secretKey, 'HS256');
+        // Pastikan token tersedia
+        if (!$apiToken) {
             return response()->json([
-                'error' => 'Failed to fetch data',
-                'status' => $response->status(),
-                'body' => $response->body(),
-            ]);
+                'message' => 'API token is missing.'
+            ], Response::HTTP_UNAUTHORIZED);
         }
 
-        // return response()->json(['error' => 'Failed to fetch data'], $response->status());
+        // Inisialisasi Guzzle Client
+        $client = new Client();
+        $headers = [
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ];
+
+        // Buat request
+        $request = new Request('GET', env('API_URL') . '/divisions', $headers);
+
+        try {
+            $response = $client->sendAsync($request)->wait();
+            return response()->json(json_decode($response->getBody(), true), Response::HTTP_OK);
+        } catch (\Exception $e) {
+            Log::error('Failed to fetch divisions', ['error' => $e->getMessage()]);
+            return response()->json([
+                'message' => 'Failed to retrieve divisions.',
+                'error' => $e->getMessage()
+            ], Response::HTTP_BAD_GATEWAY);
+        }
+    }
+
+
+    public function getCompanies(HttpRequest $request)
+    {
+          // Ambil token dari .env
+          $secretKey = env('API_JWT_SECRET');
+          $payload = [
+            'id' => '1',
+            'username' => 'admin',
+            'role' => '1',
+            // tambahkan data lain yang diperlukan
+        ];
+        
+        // Gunakan secret key yang sama dengan JWT_SECRET di API
+        $apiToken = JWT::encode($payload, $secretKey, 'HS256');
+  
+          // Encode token menggunakan HS256
+         // $apiToken = JWT::encode($payload, $secretKey, 'HS256');
+  
+
+        // Pastikan token tersedia
+        if (!$apiToken) {
+            return response()->json([
+                'message' => 'API token is missing.'
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+
+        // Inisialisasi Guzzle Client
+        $client = new Client();
+        $headers = [
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+            // 'Algorithm' => $algorithm,
+        ];
+
+        // Buat request
+        $request = new Request('GET', env('API_URL') . '/companies', $headers);
+        try {
+            $response = $client->sendAsync($request)->wait();
+            return response()->json(json_decode($response->getBody(), true), Response::HTTP_OK);
+        } catch (\Exception $e) {
+            Log::error('Failed to fetch companies', ['error' => $e->getMessage()]);
+            return response()->json([
+                'message' => 'Failed to retrieve companies.',
+                'error' => $e->getMessage()
+            ], Response::HTTP_BAD_GATEWAY);
+        }
+        /* try {
+            $response = $client->sendAsync($request)->wait();
+            return response()->json(json_decode($response->getBody(), true), Response::HTTP_OK);
+        } catch (\Exception $e) {
+            Log::error('Failed to fetch divisions', ['error' => $e->getMessage()]);
+            return response()->json([
+                'message' => 'Failed to retrieve divisions.'
+            ], Response::HTTP_BAD_GATEWAY);
+        } */
     }
 }
+
+
