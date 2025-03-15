@@ -35,6 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/users/{id}', [UserController::class, 'update']);
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
+    //API
+    Route::get('/api/divisions', [ApiController::class, 'getDivisions']);
+    Route::get('/api/companies', [ApiController::class, 'getCompanies']);
 });
 
 //AUTH
@@ -42,5 +45,3 @@ Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/api/divisions', [ApiController::class, 'getDivisions']);
-Route::get('/api/companies', [ApiController::class, 'getCompanies']);
