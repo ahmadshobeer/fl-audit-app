@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="base-url" content="{{ env('APP_URL') }}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -28,7 +29,11 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('libs/quill/dist/quill.snow.css') }}">
     <link href="{{ asset('libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <link href="{{ asset('libs/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+{{-- <script src="{{ asset('extra-libs/select2/dist/js/select2.min.js') }}"></script> --}}
+     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -367,6 +372,15 @@
             // Menampilkan hanya kategori default (misalnya 'ho')
             document.querySelector(".single-note-item.ho").style.display = "block";
         });
+
+        $(function(){
+
+            $('.select2').select2({
+                width:'100%',
+                dropdownParent: $(".modal")
+            });
+        })
+
     </script>
 
 </body>

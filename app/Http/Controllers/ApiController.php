@@ -71,24 +71,24 @@ class ApiController extends Controller
         'role' => $user->role_id,
     ];
    
-   // Gunakan secret key yang sama dengan JWT_SECRET di API
-   $jwt = JWT::encode($payload, $secretKey, 'HS256');
-   // Pastikan token tersedia
-   if (!$jwt) {
-       return response()->json([
-           'message' => 'API token is missing.'
-       ], Response::HTTP_UNAUTHORIZED);
-   }
+        // Gunakan secret key yang sama dengan JWT_SECRET di API
+        $jwt = JWT::encode($payload, $secretKey, 'HS256');
+        // Pastikan token tersedia
+        if (!$jwt) {
+            return response()->json([
+                'message' => 'API token is missing.'
+            ], Response::HTTP_UNAUTHORIZED);
+        }
 
-   // Inisialisasi Guzzle Client
-   $client = new Client();
-   $headers = [
-       'Authorization' => 'Bearer ' . $jwt,
-       'Accept' => 'application/json',
-   ];
+        // Inisialisasi Guzzle Client
+        $client = new Client();
+        $headers = [
+            'Authorization' => 'Bearer ' . $jwt,
+            'Accept' => 'application/json',
+        ];
 
-   // Buat request
-   $request = new Request('GET', env('API_URL')."/divisions/{$division_id}/head-division", $headers);
+        // Buat request
+        $request = new Request('GET', env('API_URL')."/divisions/{$division_id}/head-division", $headers);
 
         try {
             $response = $client->sendAsync($request)->wait();
@@ -103,7 +103,7 @@ class ApiController extends Controller
     }
 
 
-    public function getCompanies(HttpRequest $request)
+    public function getCompanies()
     {
      // Ambil token dari .env
      $secretKey = env('API_JWT_SECRET');

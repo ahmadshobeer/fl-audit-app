@@ -30,12 +30,11 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Nama Perusahaan</label>
-                    <select class="custom-select col-12">
-                        <option selected="">- Pilih -</option>
-                        <option value="1">API (Arita Prima Indonesia)</option>
-                        <option value="2">IAPS (Internasional Asia Pasifik Sineri)</option>
-                        <option value="3">ANS (Amanah Nusantara Sejahtera)</option>
+                    <select class="custom-select col-12 select2" name="company" id="company">
+                        <option selected="">Loading...</option>
+                       
                     </select>
+                    <p id="error-company" style="color: red; display: none;"></p>
                 </div>
                 <div class="form-group">
                     <label>Jenis Perusahaan</label>
@@ -241,5 +240,41 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function(){
+
+         var baseURL = $("meta[name='base-url']").attr("content"); // Ambil Base URL dari meta tag
+        $.ajax({
+                url: baseURL + "/api/companies", // URL endpoint
+                method: "GET",
+                dataType: "json",
+                success:function (response){
+                var select = $("#company");
+                select.empty();
+                if (response.success) {
+                        select.append('<option value="">-- Pilih Perusahaan --</option>');
+                        $.each(response.data, function (index, company) {
+                            select.append('<option value="' + company.id + '">' + company.name + '</option>');
+                        });
+                    } else {
+                        $("#error-company").text("Gagal memuat data perusahaan").show();
+                        select.append('<option value="">Gagal memuat data</option>');
+                    }
+
+                   
+
+                },
+                error:function(){
+                    $("#error-company").text("Terjadi kesalahan saat mengambil Perusahaan").show();
+                    $("#company").html('<option value="">Gagal memuat data</option>');
+             
+                }
+            });
+
+    })
+</script>
+
+
 
 @endsection

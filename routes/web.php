@@ -23,14 +23,12 @@ Route::group(['middleware' => 'auth'], function () {
         return view('menu.standard-operating-procedure');
     });
     
-    Route::get('/api/companies', [ApiController::class, 'getCompanies']);
     
     Route::get('/login', [AuthController::class, 'index'])->name('login');
-    
+
+    //USER
     Route::resource('/users',UserController::class);
-    
     Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
-    
     Route::get('/users/{id}/edit', [UserController::class, 'edit']);
     Route::put('/users/{id}', [UserController::class, 'update']);
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
