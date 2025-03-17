@@ -13,14 +13,14 @@ use App\Http\Controllers\UserController;
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', function () {
-        return view('dashboard');
+        return view('menu.dashboard');
     });
     
     
     
     Route::get('/struktur-organisasi', [StrukturOrganisasiController::class, 'index']);
     Route::get('/sop', function () {
-        return view('standard-operating-procedure');
+        return view('menu.standard-operating-procedure');
     });
     
     Route::get('/api/companies', [ApiController::class, 'getCompanies']);
@@ -35,6 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/users/{id}', [UserController::class, 'update']);
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
+    //API
+    Route::get('/api/divisions', [ApiController::class, 'getDivisions']);
+    Route::get('/api/companies', [ApiController::class, 'getCompanies']);
 });
 
 //AUTH
