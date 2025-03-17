@@ -38,6 +38,13 @@ Route::group(['middleware' => 'auth'], function () {
     //API
     Route::get('/api/divisions', [ApiController::class, 'getDivisions']);
     Route::get('/api/companies', [ApiController::class, 'getCompanies']);
+    Route::get('/api/division-head/{divisions_id}', [ApiController::class, 'getHeadDivision']); //belum bisa
+    Route::get('/api/regions', [ApiController::class, 'getRegions']);
+    Route::get('/api/positions', [ApiController::class, 'getPositions']);
+    Route::get('/api/branches-regional/{regional_id}', [ApiController::class, 'getBranchByRegion']);
+    Route::get('/api/branch-head/{branch_id}/', [ApiController::class, 'getHeadBranch']);
+    Route::get('/api/company-head/{company_id}', [ApiController::class, 'getHeadCompany']);
+
 });
 
 //AUTH
