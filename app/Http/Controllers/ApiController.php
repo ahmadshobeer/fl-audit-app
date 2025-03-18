@@ -60,7 +60,7 @@ class ApiController extends Controller
     }
 
 
-    public function getHeadDivision($division_id)
+    public function getHeadOfDivision($divisi_id)
     {
      // Ambil token dari .env
      $secretKey = env('API_JWT_SECRET');
@@ -71,32 +71,32 @@ class ApiController extends Controller
         'role' => $user->role_id,
     ];
    
-        // Gunakan secret key yang sama dengan JWT_SECRET di API
-        $jwt = JWT::encode($payload, $secretKey, 'HS256');
-        // Pastikan token tersedia
-        if (!$jwt) {
-            return response()->json([
-                'message' => 'API token is missing.'
-            ], Response::HTTP_UNAUTHORIZED);
-        }
+   // Gunakan secret key yang sama dengan JWT_SECRET di API
+   $jwt = JWT::encode($payload, $secretKey, 'HS256');
+   // Pastikan token tersedia
+   if (!$jwt) {
+       return response()->json([
+           'message' => 'API token is missing.'
+       ], Response::HTTP_UNAUTHORIZED);
+   }
 
-        // Inisialisasi Guzzle Client
-        $client = new Client();
-        $headers = [
-            'Authorization' => 'Bearer ' . $jwt,
-            'Accept' => 'application/json',
-        ];
+   // Inisialisasi Guzzle Client
+   $client = new Client();
+   $headers = [
+       'Authorization' => 'Bearer ' . $jwt,
+       'Accept' => 'application/json',
+   ];
 
-        // Buat request
-        $request = new Request('GET', env('API_URL')."/divisions/{$division_id}/head-division", $headers);
+   // Buat request
+   $request = new Request('GET', env('API_URL')."/divisions/{$divisi_id}/head-division", $headers);
 
         try {
             $response = $client->sendAsync($request)->wait();
             return response()->json(json_decode($response->getBody(), true), Response::HTTP_OK);
         } catch (\Exception $e) {
-            Log::error('Failed to fetch Head Divisions', ['error' => $e->getMessage()]);
+            Log::error('Failed to fetch of Division', ['error' => $e->getMessage()]);
             return response()->json([
-                'message' => 'Failed to retrieve Head Divisions.',
+                'message' => 'Failed to retrieve Head of Division.',
                 'error' => $e->getMessage()
             ], Response::HTTP_BAD_GATEWAY);
         }

@@ -35,8 +35,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     //API
     Route::get('/api/divisions', [ApiController::class, 'getDivisions']);
+    Route::get('/api/division-head/{divisi_id}', [ApiController::class, 'getHeadOfDivision']); //belum bisa
     Route::get('/api/companies', [ApiController::class, 'getCompanies']);
-    Route::get('/api/division-head/{divisions_id}', [ApiController::class, 'getHeadDivision']); //belum bisa
     Route::get('/api/regions', [ApiController::class, 'getRegions']);
     Route::get('/api/positions', [ApiController::class, 'getPositions']);
     Route::get('/api/branches-regional/{regional_id}', [ApiController::class, 'getBranchByRegion']);
