@@ -1,0 +1,23 @@
+SO- Jenis perushaan dihilangkan
+TIPE SOP Dibuatkan table
+File pdf
+
+
+BRanch
+otomatis nama perusahaan ->arita prima
+Regional
+-get_cabang
+-Penanggung jawabnya keisi
+TIPE SOP
+KODE SO/HO,BR,SU
+Upload File
+
+SUBSIDIARY
+nama Perusahaan tok
+TIPE SOP
+file pdf
+
+
+Eksport excel
+jadi 3 sheet, HO, Branch,Subs,
+Restore data, soft delete, nampilin modal data file yang sudah pernah dihapus, action restore, force delete
