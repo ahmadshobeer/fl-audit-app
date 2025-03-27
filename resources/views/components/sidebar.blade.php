@@ -63,16 +63,17 @@
                         <span class="hide-menu">SOP</span>
                     </a>
                 </li>
-                <li class="sidebar-item"> 
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link " href="/users" aria-expanded="false">
-                        <i class="fas fa-users mr-2"></i>
-                        <span class="hide-menu">User</span>
-                    </a>
-                </li>
+               
                 <li class="sidebar-item"> 
                     <a class="sidebar-link waves-effect waves-dark sidebar-link " href="../jobdes" aria-expanded="false">
                         <i class="fas fa-file mr-2"></i>
                         <span class="hide-menu">Job Deskripsi</span>
+                    </a>
+                </li>
+                <li class="sidebar-item"> 
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link " href="/users" aria-expanded="false">
+                        <i class="fas fa-users mr-2"></i>
+                        <span class="hide-menu">User</span>
                     </a>
                 </li>
                 <hr>

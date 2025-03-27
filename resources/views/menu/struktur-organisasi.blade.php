@@ -10,15 +10,27 @@
         </div>
         <div class="col-md-7 d-flex justify-content-end align-self-center d-none d-md-flex">
             <div class="d-flex">
-                <button class="btn btn-primary mr-1" data-toggle="modal" data-target="#created">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="mdi mdi-plus-circle mr-2"></i> Create
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modal_ho">Head Office</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modal_branch">Branch</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modal_subsidiary">Subsidiary</a>
+                    </div>
+                </div>
+
+                {{-- <button class="btn btn-primary mr-1" data-toggle="modal" data-target="#created">
                     <i class="mdi mdi-plus-circle mr-2"></i> Create
-                </button>
+                </button> --}}
             </div>
         </div>
     </div>
 </div>
 
-<div id="created" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="primary-header-modalLabel" aria-hidden="true">
+<div id="modal_ho" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="primary-header-modalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-colored-header bg-primary">
@@ -28,51 +40,25 @@
                 <button type="button" class="close ml-auto" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <label>Nama Perusahaan</label>
-                    <select class="custom-select col-12 select2" name="company" id="company">
-                        <option selected="">Loading...</option>
-                       
-                    </select>
-                    <p id="error-company" style="color: red; display: none;"></p>
-                </div>
-                <div class="form-group">
-                    <label>Jenis Perusahaan</label>
-                    <select class="custom-select col-12">
-                        <option selected="">- Pilih -</option>
-                        <option value="1">Head Office</option>
-                        <option value="2">Branch</option>
-                        <option value="3">Subsidiary</option>
-                    </select>
-                </div>
+              
+            
                 <div class="form-group">
                     <label>Divisi</label>
-                    <select class="custom-select col-12">
-                        <option selected="">- Pilih -</option>
-                        <option value="1">Informasi Teknologi</option>
-                        <option value="2">Human Capital</option>
-                        <option value="3">Finance</option>
+                    <select class="custom-select col-12 select2" name="division" id="division" onchange="fetchDivisionHead()">
+                        <option selected="">Loading...</option>
                     </select>
+                    <p id="error-division" style="color: red; display: none;"></p>
                 </div>
                 <div class="form-group">
                     <label>Penanggung Jawab</label>
-                    <input type="text" class="form-control" readonly>
-                </div>
-                <div class="form-group">
-                    <label>Tipe SOP</label>
-                    <select class="custom-select col-12">
-                        <option selected="">- Pilih -</option>
-                        <option value="1">IK (Instalasi Kerja)</option>
-                        <option value="2">IM (Internal Memo)</option>
-                        <option value="3">WI (Work Instruction)</option>
-                        <option value="3">Kebijakan</option>
-                        <option value="3">Form</option>
-                    </select>
+                    <input type="text" class="form-control" name="head_name" id="head_name" readonly>
+                    <input type="hidden" class="form-control" name="head_id" id="head_id" readonly>
+                    <p id="error-head" style="color: red; display: none;"></p>
                 </div>
                 <div class="form-group">
                     <label>File</label>
                     <div class="custom-file mb-3">
-                        <input type="file" class="custom-file-input" id="customFile">
+                        <input type="file" class="custom-file-input" id="customFile" accept="application/pdf" name="file">
                         <label class="custom-file-label form-control" for="customFile">Choose file</label>
                     </div>
                 </div>
@@ -85,6 +71,97 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
+
+
+<div id="modal_branch" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="primary-header-modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-colored-header bg-primary">
+                <h4 class="modal-title text-white" id="primary-header-modalLabel">
+                    SOP/BR-0002
+                </h4>
+                <button type="button" class="close ml-auto" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Regional</label>
+                    <select class="custom-select col-12 select2" name="region" id="region" onchange="fetchBranchByRegional()">
+                        <option selected="">Loading...</option>
+                       
+                    </select>
+                    <p id="error-region" style="color: red; display: none;"></p>
+                </div> 
+            
+                <div class="form-group">
+                    <label>Cabang</label>
+                    <select class="custom-select col-12 select2" name="branch" id="branch" onchange="fetchHeadBranchByBranch()" >
+                        <option selected="">Loading...</option>
+                    </select>
+                    <p id="error-branch" style="color: red; display: none;"></p>
+                </div>
+                <div class="form-group">
+                    <label>Penanggung Jawab</label>
+                    <input type="text" class="form-control" name="head_name" id="head_name" readonly>
+                    <input type="hidden" class="form-control" name="head_id" id="head_id" readonly>
+                    <p id="error-head" style="color: red; display: none;"></p>
+                </div>
+                <div class="form-group">
+                    <label>File</label>
+                    <div class="custom-file mb-3">
+                        <input type="file" class="custom-file-input" id="customFile" accept="application/pdf" name="file">
+                        <label class="custom-file-label form-control" for="customFile">Choose file</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light"
+                    data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Upload File</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div> 
+
+
+<div id="modal_subsidiary" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="primary-header-modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-colored-header bg-primary">
+                <h4 class="modal-title text-white" id="primary-header-modalLabel">
+                    SOP/SU-0002
+                </h4>
+                <button type="button" class="close ml-auto" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                    <label>Nama Perusahaan</label>
+                    <select class="custom-select col-12 select2" name="company" id="company"  onchange="fetchHeadCompanyByid()">
+                        <option selected="">Loading...</option>
+                    </select>
+                    <p id="error-company" style="color: red; display: none;"></p>
+                </div> 
+                <div class="form-group">
+                    <label>Penanggung Jawab</label>
+                    <input type="text" class="form-control" name="sub_head_name" id="sub_head_name" readonly>
+                    <input type="hidden" class="form-control" name="sub_head_id" id="sub_head_id" readonly>
+                    <p id="error-head" style="color: red; display: none;"></p>
+                </div>
+                <div class="form-group">
+                    <label>File</label>
+                    <div class="custom-file mb-3">
+                        <input type="file" class="custom-file-input" id="customFile" accept="application/pdf" name="file">
+                        <label class="custom-file-label form-control" for="customFile">Choose file</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light"
+                    data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Upload File</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div> 
 
 <div class="container-fluid note-has-grid">
     <ul class="nav nav-pills p-3 bg-light mb-3 rounded-pill align-items-center">
@@ -244,35 +321,16 @@
 <script>
     $(function(){
 
-         var baseURL = $("meta[name='base-url']").attr("content"); // Ambil Base URL dari meta tag
-        $.ajax({
-                url: baseURL + "/api/companies", // URL endpoint
-                method: "GET",
-                dataType: "json",
-                success:function (response){
-                var select = $("#company");
-                select.empty();
-                if (response.success) {
-                        select.append('<option value="">-- Pilih Perusahaan --</option>');
-                        $.each(response.data, function (index, company) {
-                            select.append('<option value="' + company.id + '">' + company.name + '</option>');
-                        });
-                    } else {
-                        $("#error-company").text("Gagal memuat data perusahaan").show();
-                        select.append('<option value="">Gagal memuat data</option>');
-                    }
+        
 
-                   
 
-                },
-                error:function(){
-                    $("#error-company").text("Terjadi kesalahan saat mengambil Perusahaan").show();
-                    $("#company").html('<option value="">Gagal memuat data</option>');
-             
-                }
-            });
+        
 
     })
+
+    
+
+
 </script>
 
 

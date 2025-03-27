@@ -379,7 +379,207 @@
                 width:'100%',
                 dropdownParent: $(".modal")
             });
+
+            $('#modal_ho, #modal_branch, #modal_subsidiary').on('shown.bs.modal', function () {
+            $(this).find('.select2').each(function () {
+                $(this).select2({
+                    dropdownParent: $(this).closest('.modal') // Pastikan Select2 muncul di dalam modal
+                });
+            });
+        });
+
+
+
+        var baseURL = $("meta[name='base-url']").attr("content"); // Ambil Base URL dari meta tag
+        $.ajax({
+                url: baseURL + "/api/companies", // URL endpoint
+                method: "GET",
+                dataType: "json",
+                success:function (response){
+                var select = $("#company");
+                select.empty();
+                if (response.success) {
+                        select.append('<option value="">-- Pilih Perusahaan --</option>');
+                        $.each(response.data, function (index, company) {
+                            select.append('<option value="' + company.id + '">' + company.name + '</option>');
+                        });
+                    } else {
+                        $("#error-company").text("Gagal memuat data perusahaan").show();
+                        select.append('<option value="">Gagal memuat data</option>');
+                    }
+
+                   
+
+                },
+                error:function(){
+                    $("#error-company").text("Terjadi kesalahan saat mengambil Perusahaan").show();
+                    $("#company").html('<option value="">Gagal memuat data</option>');
+             
+                }
+            });
+
+
+             $.ajax({
+                url: baseURL + "/api/divisions", // URL endpoint
+                method: "GET",
+                dataType: "json",
+                success:function (response){
+                var select = $("#division");
+                select.empty();
+                if (response.success) {
+                        select.append('<option value="">-- Pilih Divisi --</option>');
+                        $.each(response.data, function (index, division) {
+                            select.append('<option value="' + division.id + '">' + division.name + '</option>');
+                        });
+                    } else {
+                        $("#error-division").text("Gagal memuat data divisi").show();
+                        select.append('<option value="">Gagal memuat data</option>');
+                    }
+
+                   
+
+                },
+                error:function(){
+                    $("#error-division").text("Terjadi kesalahan saat mengambil Divisi").show();
+                    $("#division").html('<option value="">Gagal memuat data</option>');
+             
+                }
+            });
+
+
+            $.ajax({
+                url: baseURL + "/api/regions", // URL endpoint
+                method: "GET",
+                dataType: "json",
+                success:function (response){
+                var select = $("#region");
+                select.empty();
+                if (response.success) {
+                        select.append('<option value="">-- Pilih Region --</option>');
+                        $.each(response.data, function (index, region) {
+                            select.append('<option value="' + region.id + '">' + region.name + '</option>');
+                        });
+                    } else {
+                        $("#error-region").text("Gagal memuat data Regional").show();
+                        select.append('<option value="">Gagal memuat data</option>');
+                    }
+
+                   
+
+                },
+                error:function(){
+                    $("#error-region").text("Terjadi kesalahan saat mengambil Regional").show();
+                    $("#region").html('<option value="">Gagal memuat data</option>');
+             
+                }
+            });
         })
+
+
+    function fetchDivisionHead() {
+        var baseURL = $("meta[name='base-url']").attr("content"); 
+        let division = $("#division").val();
+        $.ajax({
+        url: baseURL + "/api/division-head/"+division, // URL endpoint
+        method: "GET",
+        dataType: "json",
+        success:function (response){
+        
+        if (response.success) {
+                $("#head_name").val(response.data.fullname);
+                $("#head_id").val(response.data.id);
+                $("#error-head").text("").show();   
+            } else {
+                $("#error-head").text(response.message).show();
+                $("#head_name").val("");
+                $("#head_id").val("");
+            }
+        },
+        error:function(){
+            $("#error-head").text("Terjadi kesalahan saat mengambil data").show();
+        }
+    });
+    }
+
+
+    function fetchBranchByRegional() {
+        var baseURL = $("meta[name='base-url']").attr("content"); 
+        let region = $("#region").val();
+        $.ajax({
+        url: baseURL + "/api/branches-regional/"+region, // URL endpoint
+        method: "GET",
+        dataType: "json",
+        success:function (response){
+            var select = $("#branch");
+            select.empty();
+            if (response.success) {
+            select.append('<option value="">-- Pilih Cabang --</option>');
+            $.each(response.data, function (index, branch) {
+                select.append('<option value="' + branch.id + '">' + branch.name + '</option>');
+            });
+        } else {
+            $("#error-branch").text("Gagal memuat data Cabang").show();
+            select.append('<option value="">Gagal memuat data</option>');
+        }
+        },
+        error:function(){
+            $("#error-pic").text("Terjadi kesalahan saat mengambil data").show();
+        }
+    });
+    }
+
+
+    function fetchHeadBranchByBranch() {
+        var baseURL = $("meta[name='base-url']").attr("content"); 
+        let id = $("#branch").val();
+        $.ajax({
+        url: baseURL + "/api/branch-head/"+id, // URL endpoint
+        method: "GET",
+        dataType: "json",
+        success:function (response){
+        
+        if (response.success) {
+                $("#head_name").val(response.data.fullname);
+                $("#head_id").val(response.data.id);
+                $("#error-head").text("").show();   
+            } else {
+                $("#error-head").text(response.message).show();
+                $("#head_name").val("");
+                $("#head_id").val("");
+            }
+        },
+        error:function(){
+            $("#error-head").text("Terjadi kesalahan saat mengambil data").show();
+        }
+    });
+    }
+
+
+
+    function fetchHeadCompanyByid() {
+        var baseURL = $("meta[name='base-url']").attr("content"); 
+        let id = $("#company").val();
+        $.ajax({
+        url: baseURL + "/api/company-head/"+id, // URL endpoint
+        method: "GET",
+        dataType: "json",
+        success:function (response){
+       
+        if (response.success) {
+                $("#sub_head_name").val(response.data.fullname);
+                $("#sub_head_id").val(response.data.id);
+                $("#error-head").text("").show();   
+            } else {
+                $("#error-head").text(response.message).show();
+                $("#sub_head_name").val("");
+                $("#sub_head_id").val("");
+            }
+        },
+        error:function(){
+            $("#error-head").text("Terjadi kesalahan saat mengambil data").show();
+        }
+    });
+    }
 
     </script>
 
