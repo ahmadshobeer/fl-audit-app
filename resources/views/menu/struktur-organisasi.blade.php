@@ -101,9 +101,9 @@
                 </div>
                 <div class="form-group">
                     <label>Penanggung Jawab</label>
-                    <input type="text" class="form-control" name="head_name" id="head_name" readonly>
-                    <input type="hidden" class="form-control" name="head_id" id="head_id" readonly>
-                    <p id="error-head" style="color: red; display: none;"></p>
+                    <input type="text" class="form-control" name="branch_head_name" id="branch_head_name" readonly>
+                    <input type="hidden" class="form-control" name="branch_head_id" id="branch_head_id" readonly>
+                    <p id="error-heads" style="color: red; display: none;"></p>
                 </div>
                 <div class="form-group">
                     <label>File</label>

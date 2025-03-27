@@ -537,15 +537,16 @@
         method: "GET",
         dataType: "json",
         success:function (response){
-        
+        console.log(id);
+        console.log(response);
         if (response.success) {
-                $("#head_name").val(response.data.fullname);
-                $("#head_id").val(response.data.id);
-                $("#error-head").text("").show();   
+                $("#branch_head_name").val(response.data.fullname);
+                $("#branch_head_id").val(response.data.id);
+                $("#error-heads").text("").show();   
             } else {
-                $("#error-head").text(response.message).show();
-                $("#head_name").val("");
-                $("#head_id").val("");
+                $("#error-heads").text(response.message).show();
+                $("#branch_head_name").val("");
+                $("#branch_head_id").val("");
             }
         },
         error:function(){
