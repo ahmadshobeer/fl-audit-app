@@ -429,7 +429,9 @@
                 if (response.success) {
                         select.append('<option value="">-- Pilih Divisi --</option>');
                         $.each(response.data, function (index, division) {
-                            select.append('<option value="' + division.id + '">' + division.name + '</option>');
+                            select.append('<option value="' + division.id + '" data-name="' + division.name + '">' + division.name + '</option>');
+           
+                            // select.append('<option value="' + division.id + '">' + division.name + '</option>');
                         });
                     } else {
                         $("#error-division").text("Gagal memuat data divisi").show();
@@ -446,6 +448,12 @@
                 }
             });
 
+            $("#division").on("change", function () {
+                var selectedOption = $(this).find(":selected");
+                var divisionName = selectedOption.data("name") || "";
+                $("#ho_input_division").val(divisionName);
+                console.log(divisionName);
+            });
 
             $.ajax({
                 url: baseURL + "/api/regions", // URL endpoint

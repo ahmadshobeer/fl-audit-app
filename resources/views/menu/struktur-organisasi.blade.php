@@ -47,6 +47,7 @@
                     <select class="custom-select col-12 select2" name="division" id="division" onchange="fetchDivisionHead()">
                         <option selected="">Loading...</option>
                     </select>
+                    <input type="hidden" name="ho_input_division" id="ho_input_division">
                     <p id="error-division" style="color: red; display: none;"></p>
                 </div>
                 <div class="form-group">
