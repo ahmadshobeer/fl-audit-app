@@ -43,6 +43,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/api/branch-head/{branch_id}/', [ApiController::class, 'getHeadBranch']);
     Route::get('/api/company-head/{company_id}', [ApiController::class, 'getHeadCompany']);
 
+    Route::post('/struktur-upload', [StrukturOrganisasiController::class, 'store'])->name('struktur.store');
+    Route::get('/struktur-headoffice', [StrukturOrganisasiController::class, 'headoffice'])->name('struktur.headoffice');
+
 });
 
 //AUTH
