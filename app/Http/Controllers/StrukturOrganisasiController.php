@@ -71,20 +71,24 @@ class StrukturOrganisasiController extends Controller
     public function headoffice(Request $request)
     {
         if ($request->ajax()) {
-            $data = HeadOffice::select('doc_number', 'division_id', 'division_name', 'head_id', 'file_path', 'tipe', 'sop_id', 'user_id');
+            $data = HeadOffice::select('doc_number', 'division_id', 'division_name', 'head_id', 'file_path','created_at');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('tanggal_upload', function ($row) {
                     return $row->created_at ? $row->created_at->format('d/m/Y') : '-';
                 })
-                /* ->addColumn('file_preview', function ($row) {
-                    return '<a href="'.asset('storage/'.$row->file_path).'" target="_blank" class="btn btn-sm btn-infp"><i class="fa fa-file text-white"></a>';
+                ->addColumn('file_preview', function ($row) {
+                    $fileUrl = asset('storage/' . $row->file_path);
+                    return file_exists(public_path('storage/' . $row->file_path)) ? 
+                        '<a href="' . $fileUrl . '" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-file "></a>' : 
+                        '<span class="text-danger">File Not Found</span>';
                 })
-                
-                ->rawColumns(['file_preview'])
-                ->addColumn('soft_delete', function ($row) {
-                    return '<a href="'.asset('storage/'.$row->file_path).'" target="_blank" class="btn btn-sm btn-danger"><i class="fa fa-delete"></i></a>';
+               /* ->addColumn('file_preview', function ($row) {
+                    return '<a href="'.asset('storage/'.$row->file_path).'" target="_blank" class="btn btn-sm btn-info" style="text-align:center"><i class="fa fa-file "></a>';
                 }) */
+                ->addColumn('soft_delete', function ($row) {
+                    return '<a href="'.asset('storage/'.$row->file_path).'" target="_blank" class="btn btn-sm btn-danger " style="text-align:center"><i class="fa fa-trash"></i></a>';
+                })->rawColumns(['file_preview','soft_delete'] )
                 ->make(true);
         }
             // return DataTables::of($data)->make(true);

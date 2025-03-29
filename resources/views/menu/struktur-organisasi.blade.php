@@ -210,8 +210,8 @@
                                     <th class="text-center" style="width: 25%;">Divisi</th>
                                     <th class="text-center" style="width: 31%;">Penanggung Jawab</th>
                                     <th class="text-center" style="width: 5%;">Tanggal Upload</th>
-                                    {{-- <th class="text-center" style="width: 10%;">File</th>
-                                    <th class="text-center" style="width: 20%;"><i class="fas fa-cog"></i></th> --}}
+                                    <th class="text-center" style="width: 10%;">File</th>
+                                    <th class="text-center" style="width: 20%;"><i class="fas fa-cog"></i></th>
                                 </tr>
                             </thead>
                             {{-- <tbody>
@@ -331,13 +331,12 @@
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
             { data: 'doc_number', name: 'doc_number' },
-           
             { data: 'division_name', name: 'division_name' },
             { data: 'head_id', name: 'head_id' },
             { data: 'tanggal_upload', name: 'tanggal_upload' },
-            /* { data: 'file_preview', name: 'file_preview', orderable: false, searchable: false },
+            { data: 'file_preview', name: 'file_preview', orderable: false, searchable: false },
             { data: 'soft_delete', name: 'soft_delete', orderable: false, searchable: false }
-            */
+           
         ]
     });
 
