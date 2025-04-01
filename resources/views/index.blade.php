@@ -239,10 +239,7 @@
                                         <td>{{ $loop->iteration + ($data->currentPage() - 1) * $data->perPage() }}</td>
                                         <td>{{ $row->doc_number }}</td>
                                         <td>{{ $row->division_name }}</td>
-                                        {{-- <td>{{ $row->head_id }}</td> --}}
-                                        <td>{!! $row->fullname !!}</td> <!-- Menampilkan Fullname dari API -->
-                                        <td>{{ $row->created_at ? $row->created_at->format('d/m/Y') : '-' }}</td>
-                                       
+                                        <td>{{ $row->head_id }}</td>
                                         <td>
                                             @if (Storage::exists('public/' . $row->file_path))
                                                 <a href="{{ asset('storage/' . $row->file_path) }}" target="_blank" class="btn btn-sm btn-primary">Preview</a>
@@ -250,12 +247,9 @@
                                                 <span class="text-danger">File Not Found</span>
                                             @endif
                                         </td>
-                                       <td>
-                                            <form action="" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Delete</button>
-                                            </form>
+                                        <td>{{ $row->created_at ? $row->created_at->format('d/m/Y') : '-' }}</td>
+                                        <td>
+                                            
                                         </td>
                                     </tr>
                                 

@@ -21,6 +21,7 @@ class ApiController extends Controller
         
           // Ambil token dari .env
           $secretKey = env('API_JWT_SECRET');
+        //   $secretKey = "iOwS/qdeECuSQOiXSua5MA3JeO+z7HGxCycIZE32tnwvNqeWb8xYU4iuRPE+0c/+drv5vannoJvQP30izo4gpp7MgXD9m+2uogfAILsPMpKCrZI6vWrNu4tV1KkE4Db8n7BDyIeTQsAReVyJD15qVZZdPA/+Gvw7BeBjHg39BprIXOmsNGZ69NkwRc7CxQXukJUxUH1PPFHeJuSHjMGdmEa7XhVfqwj1WGsSTdJRMKJ5ddUcqdJR1jXX4rB3zHvYygTcdjGrkoM+0klP+oSfDLlB0zFrS9rlFGFQ9f6/RbAtHQhGEVyNiaVZU4bYu/yBSDeLaUJjXeAA5g5uVwRl+w==";
           $user = Auth::user();
           $payload = [
             'id' => $user->id,
@@ -45,7 +46,7 @@ class ApiController extends Controller
         ];
 
         // Buat request
-        $request = new Request('GET', env('API_URL').'/divisions', $headers);
+        $request = new Request('GET', "https://api.arita.co.id/api/audit".'/divisions', $headers);
 
         try {
             $response = $client->sendAsync($request)->wait();
@@ -88,7 +89,7 @@ class ApiController extends Controller
    ];
 
    // Buat request
-   $request = new Request('GET', env('API_URL')."/divisions/{$divisi_id}/head-division", $headers);
+   $request = new Request('GET',"https://api.arita.co.id/api/audit"."/divisions/{$divisi_id}/head-division", $headers);
 
         try {
             $response = $client->sendAsync($request)->wait();
