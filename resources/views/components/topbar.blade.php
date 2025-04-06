@@ -106,34 +106,7 @@
                                     Messages
                                 </div>
                             </li>
-                            <li>
-                                <div class="message-center message-body position-relative" style="height:250px;">
-                                    <!-- Message -->
-                                    {{-- <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                        <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle online"></span> </span>
-                                        <div class="w-75 d-inline-block v-middle pl-2">
-                                            <h5 class="message-title mb-0 mt-1">Pavan kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:30 AM</span> </div>
-                                    </a> --}}
-                                    <!-- Message -->
-                                   {{--  <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                        <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/2.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle busy"></span> </span>
-                                        <div class="w-75 d-inline-block v-middle pl-2">
-                                            <h5 class="message-title mb-0 mt-1">Sonu Nigam</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">I've sung a song! See you at</span> <span class="font-12 text-nowrap d-block text-muted">9:10 AM</span> </div>
-                                    </a> --}}
-                                    <!-- Message -->
-                                    {{-- <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                        <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/3.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle away"></span> </span>
-                                        <div class="w-75 d-inline-block v-middle pl-2">
-                                            <h5 class="message-title mb-0 mt-1">Arijit Sinh</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">I am a singer!</span> <span class="font-12 text-nowrap d-block text-muted">9:08 AM</span> </div>
-                                    </a> --}}
-                                    <!-- Message -->
-                                    {{-- <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                        <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/4.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle offline"></span> </span>
-                                        <div class="w-75 d-inline-block v-middle pl-2">
-                                            <h5 class="message-title mb-0 mt-1">Pavan kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span> </div>
-                                    </a> --}}
-                                </div>
-                            </li>
+                            
                             <li>
                                 <a class="nav-link border-top text-center text-dark pt-3" href="javascript:void(0);"> <b>See all e-Mails</b> <i class="fa fa-angle-right"></i> </a>
                             </li>
@@ -154,21 +127,7 @@
                             <div class="col-lg-3 col-xlg-2 mb-4">
                                 <h4 class="mb-3">CAROUSEL</h4>
                                 <!-- CAROUSEL -->
-                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner" role="listbox">
-                                        <div class="carousel-item active">
-                                            <div class="container p-0"> <img class="d-block img-fluid" src="../assets/images/big/img1.jpg" alt="First slide"></div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <div class="container p-0"><img class="d-block img-fluid" src="../assets/images/big/img2.jpg" alt="Second slide"></div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <div class="container p-0"><img class="d-block img-fluid" src="../assets/images/big/img3.jpg" alt="Third slide"></div>
-                                        </div>
-                                    </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
-                                </div>
+                                
                                 <!-- End CAROUSEL -->
                             </div>
                             <div class="col-lg-3 mb-4">
@@ -267,26 +226,7 @@
                 <!-- ============================================================== -->
                 <!-- User profile and search -->
                 <!-- ============================================================== -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
-                    <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                        <div class="d-flex no-block align-items-center p-3 mb-2 border-bottom">
-                            <div class=""><img src="../assets/images/users/1.jpg" alt="user" class="rounded" width="80"></div>
-                            <div class="ml-2">
-                                <h4 class="mb-0">Steave Jobs</h4>
-                                <p class=" mb-0">varun@gmail.com</p>
-                                <a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
-                            </div>
-                        </div>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user mr-1 ml-1"></i> My Profile</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet mr-1 ml-1"></i> My Balance</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email mr-1 ml-1"></i> Inbox</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings mr-1 ml-1"></i> Account Setting</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off mr-1 ml-1"></i> Logout</a>
-                    </div>
-                </li>
+               
                 <!-- ============================================================== -->
                 <!-- User profile and search -->
                 <!-- ============================================================== -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Models\HeadOffice;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,7 @@ class StrukturOrganisasiController extends Controller
         ]);
 
           // Ambil nomor terakhir dengan tipe 'SOP'
-            $lastDoc = HeadOffice::where('tipe', 'struktur_organisasi')->latest('id')->value('doc_number');
+            $lastDoc = HeadOffice::withTrashed()->where('tipe', 'struktur_organisasi')->latest('id')->value('doc_number');
 
             // Generate nomor baru
             if ($lastDoc) {
@@ -84,8 +85,9 @@ class StrukturOrganisasiController extends Controller
     public function headoffice(Request $request)
     {
               // $data = HeadOffice::select('doc_number', 'division_id', 'division_name', 'head_id', 'file_path','created_at');
-              $data = HeadOffice::whereNull('deleted_at')->get(); // atau default pakai ->get() saja, Laravel exclude soft delete
-       
+            //   $data = HeadOffice::whereNull('deleted_at')->get(); // atau default pakai ->get() saja, Laravel exclude soft delete
+            $data = HeadOffice::where('tipe', 'struktur_organisasi')->get();
+
         $divisionIds = $data->pluck('division_id')->filter()->unique()->toArray();
         $divisionHeads = [];
         foreach ($divisionIds as $divId) {
@@ -153,5 +155,56 @@ class StrukturOrganisasiController extends Controller
 
         return response()->json($deleted);
     }
+
+
+    public function storeBranch(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:jpg,png,pdf|max:2048',
+            'region' => 'required|string',
+            'ho_input_region' => 'required|string',
+           
+            'branch_head_id' => 'required|string',
+            
+        ]);
+
+          // Ambil nomor terakhir dengan tipe 'SOP'
+            $lastDoc = Branch::withTrashed()->where('tipe', 'struktur_organisasi')->latest('id')->value('doc_number');
+
+            // Generate nomor baru
+            if ($lastDoc) {
+                // Ambil angka terakhir dari format "SOP/HO-000X"
+                preg_match('/(\d+)$/', $lastDoc, $matches);
+                $nextNumber = isset($matches[1]) ? intval($matches[1]) + 1 : 1;
+            } else {
+                $nextNumber = 1;
+            }
+
+            
+            $newDocNumber = 'SO/BR-' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $path = $file->store('uploads', 'public');
+            
+            Branch::create([
+                'doc_number' => $newDocNumber,
+               
+                'region_id' => $request->region,
+                'region_name' => $request->ho_input_region,
+                'head_id' => $request->branch_head_id,
+                'tipe' => "struktur_organisasi",
+                'file_path' => $path,
+                'user_id' => Auth::user()->id,
+            ]);
+
+            return response()->json(['success' => true, 'message' => 'File berhasil diupload!', 'doc_number' => $newDocNumber]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Gagal mengupload file!']);
     }
+}
+
+
+    
 

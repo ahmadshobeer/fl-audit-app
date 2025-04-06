@@ -194,129 +194,10 @@
                 </div>
                 <!-- End Tab 1 -->
                 <!-- Tab 2 -->
-                <div class="tab-pane fade" id="chat" role="tabpanel" aria-labelledby="pills-profile-tab">
-                    <ul class="mailbox list-style-none mt-3">
-                        <li>
-                            <div class="message-center chat-scroll position-relative">
-                                <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2" id='chat_user_1' data-user-id='1'>
-                                    <span  class="user-img position-relative d-inline-block"> <img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle online"></span> </span>
-                                    <div class="w-75 d-inline-block v-middle pl-2">
-                                        <h5 class="message-title mb-0 mt-1">Pavan kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:30 AM</span> </div>
-                                </a>
-                                <!-- Message -->
-                                <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2" id='chat_user_2' data-user-id='2'>
-                                    <span  class="user-img position-relative d-inline-block"> <img src="../assets/images/users/2.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle busy"></span> </span>
-                                    <div class="w-75 d-inline-block v-middle pl-2">
-                                        <h5 class="message-title mb-0 mt-1">Sonu Nigam</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">I've sung a song! See you at</span> <span class="font-12 text-nowrap d-block text-muted">9:10 AM</span> </div>
-                                </a>
-                                <!-- Message -->
-                                <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2" id='chat_user_3' data-user-id='3'>
-                                    <span  class="user-img position-relative d-inline-block"> <img src="../assets/images/users/3.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle away"></span> </span>
-                                    <div class="w-75 d-inline-block v-middle pl-2">
-                                        <h5 class="message-title mb-0 mt-1">Arijit Sinh</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">I am a singer!</span> <span class="font-12 text-nowrap d-block text-muted">9:08 AM</span> </div>
-                                </a>
-                                <!-- Message -->
-                                <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2" id='chat_user_4' data-user-id='4'>
-                                    <span  class="user-img position-relative d-inline-block"> <img src="../assets/images/users/4.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle offline"></span> </span>
-                                    <div class="w-75 d-inline-block v-middle pl-2">
-                                        <h5 class="message-title mb-0 mt-1">Nirav Joshi</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span> </div>
-                                </a>
-                                <!-- Message -->
-                                <!-- Message -->
-                                <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2" id='chat_user_5' data-user-id='5'>
-                                    <span  class="user-img position-relative d-inline-block"> <img src="../assets/images/users/5.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle offline"></span> </span>
-                                    <div class="w-75 d-inline-block v-middle pl-2">
-                                        <h5 class="message-title mb-0 mt-1">Sunil Joshi</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span> </div>
-                                </a>
-                                <!-- Message -->
-                                <!-- Message -->
-                                <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2" id='chat_user_6' data-user-id='6'>
-                                    <span  class="user-img position-relative d-inline-block"> <img src="../assets/images/users/6.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle offline"></span> </span>
-                                    <div class="w-75 d-inline-block v-middle pl-2">
-                                        <h5 class="message-title mb-0 mt-1">Akshay Kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span> </div>
-                                </a>
-                                <!-- Message -->
-                                <!-- Message -->
-                                <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2" id='chat_user_7' data-user-id='7'>
-                                    <span  class="user-img position-relative d-inline-block"> <img src="../assets/images/users/7.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle offline"></span> </span>
-                                    <div class="w-75 d-inline-block v-middle pl-2">
-                                        <h5 class="message-title mb-0 mt-1">Pavan kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span> </div>
-                                </a>
-                                <!-- Message -->
-                                <!-- Message -->
-                                <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2" id='chat_user_8' data-user-id='8'>
-                                    <span  class="user-img position-relative d-inline-block"> <img src="../assets/images/users/8.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle offline"></span> </span>
-                                    <div class="w-75 d-inline-block v-middle pl-2">
-                                        <h5 class="message-title mb-0 mt-1">Varun Dhavan</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span> </div>
-                                </a>
-                                <!-- Message -->
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+             
                 <!-- End Tab 2 -->
                 <!-- Tab 3 -->
-                <div class="tab-pane fade p-3" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                    <h6 class="mt-3 mb-3">Activity Timeline</h6>
-                    <div class="steamline">
-                        <div class="sl-item">
-                            <div class="sl-left bg-success"> <i class="ti-user"></i></div>
-                            <div class="sl-right">
-                                <div class="font-weight-medium">Meeting today <span class="sl-date"> 5pm</span></div>
-                                <div class="desc">you can write anything </div>
-                            </div>
-                        </div>
-                        <div class="sl-item">
-                            <div class="sl-left bg-info"><i class="fas fa-image"></i></div>
-                            <div class="sl-right">
-                                <div class="font-weight-medium">Send documents to Clark</div>
-                                <div class="desc">Lorem Ipsum is simply </div>
-                            </div>
-                        </div>
-                        <div class="sl-item">
-                            <div class="sl-left"> <img class="rounded-circle" alt="user" src="../assets/images/users/2.jpg"> </div>
-                            <div class="sl-right">
-                                <div class="font-weight-medium">Go to the Doctor <span class="sl-date">5 minutes ago</span></div>
-                                <div class="desc">Contrary to popular belief</div>
-                            </div>
-                        </div>
-                        <div class="sl-item">
-                            <div class="sl-left"> <img class="rounded-circle" alt="user" src="../assets/images/users/1.jpg"> </div>
-                            <div class="sl-right">
-                                <div><a href="javascript:void(0)">Stephen</a> <span class="sl-date">5 minutes ago</span></div>
-                                <div class="desc">Approve meeting with tiger</div>
-                            </div>
-                        </div>
-                        <div class="sl-item">
-                            <div class="sl-left bg-primary"> <i class="ti-user"></i></div>
-                            <div class="sl-right">
-                                <div class="font-weight-medium">Meeting today <span class="sl-date"> 5pm</span></div>
-                                <div class="desc">you can write anything </div>
-                            </div>
-                        </div>
-                        <div class="sl-item">
-                            <div class="sl-left bg-info"><i class="fas fa-image"></i></div>
-                            <div class="sl-right">
-                                <div class="font-weight-medium">Send documents to Clark</div>
-                                <div class="desc">Lorem Ipsum is simply </div>
-                            </div>
-                        </div>
-                        <div class="sl-item">
-                            <div class="sl-left"> <img class="rounded-circle" alt="user" src="../assets/images/users/4.jpg"> </div>
-                            <div class="sl-right">
-                                <div class="font-weight-medium">Go to the Doctor <span class="sl-date">5 minutes ago</span></div>
-                                <div class="desc">Contrary to popular belief</div>
-                            </div>
-                        </div>
-                        <div class="sl-item">
-                            <div class="sl-left"> <img class="rounded-circle" alt="user" src="../assets/images/users/6.jpg"> </div>
-                            <div class="sl-right">
-                                <div><a href="javascript:void(0)">Stephen</a> <span class="sl-date">5 minutes ago</span></div>
-                                <div class="desc">Approve meeting with tiger</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
                 <!-- End Tab 3 -->
             </div>
         </div>
@@ -452,7 +333,13 @@
                 var selectedOption = $(this).find(":selected");
                 var divisionName = selectedOption.data("name") || "";
                 $("#ho_input_division").val(divisionName);
-                console.log(divisionName);
+               // console.log(divisionName);
+            });
+            $("#region").on("change", function () {
+                var selectedOption = $(this).find(":selected");
+                var regionName = selectedOption.data("name") || "";
+                $("#ho_input_region").val(regionName);
+               console.log(regionName);
             });
 
             $.ajax({
@@ -465,7 +352,7 @@
                 if (response.success) {
                         select.append('<option value="">-- Pilih Region --</option>');
                         $.each(response.data, function (index, region) {
-                            select.append('<option value="' + region.id + '">' + region.name + '</option>');
+                            select.append('<option value="' + region.id + '" data-name="' + region.name + '">' + region.name + '</option>');
                         });
                     } else {
                         $("#error-region").text("Gagal memuat data Regional").show();
@@ -518,16 +405,16 @@
         method: "GET",
         dataType: "json",
         success:function (response){
-            var select = $("#branch");
-            select.empty();
+            var select_branch = $("#branch");
+            select_branch.empty();
             if (response.success) {
-            select.append('<option value="">-- Pilih Cabang --</option>');
+            select_branch.append('<option value="">-- Pilih Cabang --</option>');
             $.each(response.data, function (index, branch) {
-                select.append('<option value="' + branch.id + '">' + branch.name + '</option>');
+                select_branch.append('<option value="' + branch.id + '">' + branch.name + '</option>');
             });
         } else {
             $("#error-branch").text("Gagal memuat data Cabang").show();
-            select.append('<option value="">Gagal memuat data</option>');
+            select_branch.append('<option value="">Gagal memuat data</option>');
         }
         },
         error:function(){

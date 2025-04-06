@@ -47,6 +47,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/struktur-headoffice', [StrukturOrganisasiController::class, 'headoffice'])->name('struktur.headoffice');
     Route::delete('/head-office/delete/{id}', [StrukturOrganisasiController::class, 'softDelete']);
 
+    
+    Route::post('/struktur-uploadbranch', [StrukturOrganisasiController::class, 'storeBranch'])->name('struktur.storeBranch');
+
 });
 
 //AUTH

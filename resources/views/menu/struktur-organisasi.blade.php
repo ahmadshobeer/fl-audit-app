@@ -78,6 +78,7 @@
 
 <div id="modal_branch" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="primary-header-modalLabel" aria-hidden="true">
     <div class="modal-dialog">
+        <form id="form_branch" enctype="multipart/form-data">
         <div class="modal-content">
             <div class="modal-header modal-colored-header bg-primary">
                 <h4 class="modal-title text-white" id="primary-header-modalLabel">
@@ -92,6 +93,7 @@
                         <option selected="">Loading...</option>
                        
                     </select>
+                    <input type="text" name="ho_input_region" id="ho_input_region">
                     <p id="error-region" style="color: red; display: none;"></p>
                 </div> 
             
@@ -105,7 +107,7 @@
                 <div class="form-group">
                     <label>Penanggung Jawab</label>
                     <input type="text" class="form-control" name="branch_head_name" id="branch_head_name" readonly>
-                    <input type="hidden" class="form-control" name="branch_head_id" id="branch_head_id" readonly>
+                    <input type="text" class="form-control" name="branch_head_id" id="branch_head_id" readonly>
                     <p id="error-heads" style="color: red; display: none;"></p>
                 </div>
                 <div class="form-group">
@@ -119,8 +121,11 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-light"
                     data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Upload File</button>
+                    <button type="submit" class="btn btn-success">Upload File</button>
+               
+                {{-- <button type="button" class="btn btn-primary">Upload File</button> --}}
             </div>
+        </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div> 
@@ -205,7 +210,7 @@
                         <table id="table_ho" class="table table-striped table-bordered display no-wrap" style="width:100%; font-size: 14px">
                             <thead>
                                 <tr>
-                                    {{-- <th class="text-center" style="width: 4%;">No.</th> --}}
+                                    <th class="text-center" style="width: 4%;">No.</th>
                                     <th class="text-center" style="width: 10%;">Kode SO</th>
                                     <th class="text-center" style="width: 25%;">Divisi</th>
                                     <th class="text-center" style="width: 31%;">Penanggung Jawab</th>
@@ -214,51 +219,7 @@
                                     <th class="text-center" style="width: 20%;"><i class="fas fa-cog"></i></th>
                                 </tr>
                             </thead>
-                            {{-- <tbody>
-                                <tr>
-                                    <td style="width: 4%;" class="text-center">1.</td>
-                                    <td style="width: 10%;" class="text-center">SO/HO-0001</td>
-                                    <td style="width: 25%;">Informasi Teknologi</td>
-                                    <td style="width: 31%;">David Ruskandi</td>
-                                    <td style="width: 5%;" class="text-center">10/02/2025</td>
-                                    <td style="width: 10%;" class="text-center">
-                                        <button type="button" class="btn btn-info btn-circle-lg">
-                                            <i class="fa fa-file text-white"></i>
-                                        </button>
-                                    </td>
-                                    <td style="width: 10%;" class="text-center">
-                                        <button type="button" class="btn btn-danger btn-circle-lg ml-1"  data-toggle="modal" data-target="#delete" >
-                                            <i class="fas fa-trash text-white"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody> --}}
-                            {{-- <tbody>
-                                @foreach($data as $key => $row)
-                                    <tr>
-                                       
-                                        <td>{!! $row->fullname !!}</td> <!-- Menampilkan Fullname dari API -->
-                                        <td>{{ $row->created_at ? $row->created_at->format('d/m/Y') : '-' }}</td>
-                                       
-                                        <td>
-                                            @if (Storage::exists('public/' . $row->file_path))
-                                                <a href="{{ asset('storage/' . $row->file_path) }}" target="_blank" class="btn btn-sm btn-primary">Preview</a>
-                                            @else
-                                                <span class="text-danger">File Not Found</span>
-                                            @endif
-                                        </td>
-                                       <td>
-                                            <form action="" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                
-                                   
-                                @endforeach
-                            </tbody> --}}
+                            
                         </table>
                     </div>
                 </div>
@@ -280,26 +241,7 @@
                                     <th class="text-center" style="width: 20%;"><i class="fas fa-cog"></i></th>
                                 </tr>
                             </thead>
-                            {{-- <tbody>
-                                <tr>
-                                    <td style="width: 4%;" class="text-center">1.</td>
-                                    <td style="width: 10%;" class="text-center">SO/BR-0001</td>
-                                    <td style="width: 20%;">Kalimantan Selatan</td>
-                                    <td style="width: 15%;">Banjarmasin</td>
-                                    <td style="width: 21%;">Tatang Budi</td>
-                                    <td style="width: 5%;" class="text-center">10/02/2025</td>
-                                    <td style="width: 10%;" class="text-center">
-                                        <button type="button" class="btn btn-info btn-circle-lg">
-                                            <i class="fa fa-file text-white"></i>
-                                        </button>
-                                    </td>
-                                    <td style="width: 10%;" class="text-center">
-                                        <button type="button" class="btn btn-danger btn-circle-lg ml-1"  data-toggle="modal" data-target="#delete">
-                                            <i class="fas fa-trash text-white"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody> --}}
+                           
                         </table>
                     </div>
                 </div>
@@ -361,7 +303,7 @@
         serverSide: true,
         ajax: '{{ route('struktur.headoffice') }}',
         columns: [
-            // { data: 'id', name: 'id' },
+            { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
             { data: 'doc_number', name: 'doc_number' },
             { data: 'division_name', name: 'division_name' },
             { data: 'fullname', name: 'fullname' },
@@ -401,6 +343,51 @@
                 Swal.fire('Error!', errorMessage, 'error');
             }
         });
+
+        /*  */
+
+        
+
+
+        
+
+
+
+      
+    });
+
+    $('#form_branch').on('submit', function(e) {
+        e.preventDefault();
+        let formData = new FormData(this);
+        
+        $.ajax({
+            url: '{{ route('struktur.storeBranch') }}',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.success) {
+                    Swal.fire('Sukses!', response.message + "\nNomor Dokumen: " + response.doc_number, 'success');
+                    $('#modal_branch').modal('hide');
+                    $('#table_branch').DataTable().ajax.reload(); // Reload DataTable
+                } else {
+                    Swal.fire('Error!', response.message, 'error');
+                }
+            },
+            error: function(xhr) {
+                let errors = xhr.responseJSON.errors;
+                let errorMessage = 'Terjadi kesalahan saat mengupload file.';
+                if (errors) {
+                    errorMessage = Object.values(errors).map(err => err.join("<br>")) .join("<br>");
+                }
+                Swal.fire('Error!', errorMessage, 'error');
+            }
+        });   
+
+
+
+      
     });
 
 
