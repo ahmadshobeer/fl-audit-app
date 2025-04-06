@@ -205,7 +205,7 @@
                         <table id="table_ho" class="table table-striped table-bordered display no-wrap" style="width:100%; font-size: 14px">
                             <thead>
                                 <tr>
-                                    <th class="text-center" style="width: 4%;">No.</th>
+                                    {{-- <th class="text-center" style="width: 4%;">No.</th> --}}
                                     <th class="text-center" style="width: 10%;">Kode SO</th>
                                     <th class="text-center" style="width: 25%;">Divisi</th>
                                     <th class="text-center" style="width: 31%;">Penanggung Jawab</th>
@@ -233,13 +233,10 @@
                                     </td>
                                 </tr>
                             </tbody> --}}
-                            <tbody>
+                            {{-- <tbody>
                                 @foreach($data as $key => $row)
                                     <tr>
-                                        <td>{{ $loop->iteration + ($data->currentPage() - 1) * $data->perPage() }}</td>
-                                        <td>{{ $row->doc_number }}</td>
-                                        <td>{{ $row->division_name }}</td>
-                                        {{-- <td>{{ $row->head_id }}</td> --}}
+                                       
                                         <td>{!! $row->fullname !!}</td> <!-- Menampilkan Fullname dari API -->
                                         <td>{{ $row->created_at ? $row->created_at->format('d/m/Y') : '-' }}</td>
                                        
@@ -261,7 +258,7 @@
                                 
                                    
                                 @endforeach
-                            </tbody>
+                            </tbody> --}}
                         </table>
                     </div>
                 </div>
@@ -353,6 +350,26 @@
 <script>
     $(function(){
 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        });
+
+        $('#table_ho').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{ route('struktur.headoffice') }}',
+        columns: [
+            // { data: 'id', name: 'id' },
+            { data: 'doc_number', name: 'doc_number' },
+            { data: 'division_name', name: 'division_name' },
+            { data: 'fullname', name: 'fullname' },
+            { data: 'tanggal_upload', name: 'tanggal_upload' },
+            { data: 'file_preview', name: 'file_preview' },
+            { data: 'soft_delete', name: 'soft_delete' },
+        ]
+    });
        
 
 
@@ -382,6 +399,38 @@
                     errorMessage = Object.values(errors).map(err => err.join("<br>")) .join("<br>");
                 }
                 Swal.fire('Error!', errorMessage, 'error');
+            }
+        });
+    });
+
+
+
+    $('body').on('click', '.delete-ho', function () {
+        let id = $(this).data('id');
+
+        Swal.fire({
+            title: 'Yakin mau hapus?',
+            text: "Data akan dihapus sementara ",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '/head-office/delete/' + id,
+                    type: 'DELETE',
+                    success: function (response) {
+                        Swal.fire('Berhasil!', response.message, 'success');
+        
+                        $('#table_ho').DataTable().ajax.reload(); // Reload DataTable
+                    },
+                    error: function (xhr) {
+                        Swal.fire('Gagal!', 'Terjadi kesalahan saat menghapus data.', 'error');
+                    }
+                });
             }
         });
     });
